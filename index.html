@@ -71,15 +71,31 @@
 
                 <!-- Div laterali chat -->
 
-                <div class="imgfix d-flex align-items-center mt-2 ">
+
+                <!-- MODO DINAMICO CICLATO CON V-FOR -->
+
+                <div v-for="(element, index) in contacts" class="d-flex align-items-center justify-content-between p-1 ">
+
+                    <div class="d-flex align-items-center">
+                       <img :src="contacts[index].avatar"  alt="Profile image">
+                       <div>
+                          <span>{{element.name}}</span>
+                          <div class="fs-7 ms-2">{{element.messages[element.messages.length - 1].message}}</div>
+                       </div>
+                    </div>
+                
+
+                 <!-- statico commentato -->
+
+                <!-- <div class="imgfix d-flex align-items-center mt-2 ">
                     <img src="./assets/img/avatar_1.jpg" alt="profile pic">
                     <div class="d-flex flex-column">
                         <span class="contact-name p-1">Michele</span>
                         <span class="last-activity text-secondary fs-6 p-1">ultimo messaggio inviato</span>
                     </div>
 
-                </div>
-                <div class="imgfix d-flex align-items-center mt-2 ">
+                </div> -->
+                <!-- <div class="imgfix d-flex align-items-center mt-2 ">
                     <img src="./assets/img/avatar_2.jpg" alt="profile pic">
                     <div class="d-flex flex-column">
                         <span class="contact-name p-1">Fabio</span>
@@ -136,7 +152,7 @@
                     <div class="d-flex flex-column">
                         <span class="contact-name p-1">Davide</span>
                         <span class="last-activity text-secondary fs-6 p-1">ultimo messaggio inviato</span>
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -151,9 +167,9 @@
                     <!-- div chat in alto "michele" -->
 
                     <div class="d-flex align-items-center">
-                        <img src="./assets/img/avatar_1.jpg" alt="profile pic">
+                        <img :src="contacts[0].avatar" alt="profile pic">
                         <div class="d-flex flex-column">
-                            <span class="contact-name p-1">Michele</span>
+                            <span class="contact-name p-1">{{contacts[0].name}}</span>
                             <span class="last-activity text-secondary fs-6 p-1">ultimo accesso: oggi alle 12:00</span>
                         </div>
 
@@ -171,13 +187,14 @@
 
                 <!-- chat  part-->
 
+
                 <section class="height d-flex flex-column">
                     <div class="generale">
                         <div class="opened-chat d-flex flex-column">
                             <div class="msg d-flex justify-content-end">
                                 <div class="msg-box green">
-                                    <span>Hai portato in giro il cane?</span>
-                                    <span class="hour">12:00</span>
+                                    <span>{{contacts[0].messages[0].message}}</span>
+                                    <span class="hour">{{contacts[0].messages[0].date}}</span>
                                 </div>
 
                             </div>
@@ -188,8 +205,8 @@
                         <div class="opened-chat d-flex flex-column">
                             <div class="msg d-flex justify-content-end">
                                 <div class="msg-box green">
-                                    <span>Ricordati di stendere i panni!</span>
-                                    <span class="hour">12:00</span>
+                                    <span>{{contacts[0].messages[1].message}}</span>
+                                    <span class="hour">{{contacts[0].messages[1].date}}</span>
                                 </div>
 
                             </div>
@@ -203,8 +220,8 @@
                         <div class="opened-chat d-flex flex-column">
                             <div class="msg d-flex">
                                 <div class="msg-box bg-light">
-                                    <span>Tutto fatto!</span>
-                                    <span class="hour">12:00</span>
+                                    <span>{{contacts[0].messages[2].message}}</span>
+                                    <span class="hour">{{contacts[0].messages[2].date}}</span>
                                 </div>
 
                             </div>
@@ -230,6 +247,7 @@
 
 
             </div>
+   
 
         </div>
 

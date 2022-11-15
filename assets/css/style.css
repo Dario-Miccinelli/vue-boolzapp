@@ -79,12 +79,15 @@ i {
     width: 100%;
     border: none;
 }
+
+
  
 
 /* le immagini erano troppo grandi */
-.imgfix img {
+/* .imgfix img {
   width: 10%; 
-}
+} */
+/* non più necessario */
 
 
 
