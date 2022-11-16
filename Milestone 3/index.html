@@ -101,7 +101,7 @@
                         <img :src="contacts[activeContact].avatar" alt="profile pic">
                         <div class="d-flex flex-column">
                             <span class="contact-name p-1">{{contacts[activeContact].name}}</span>
-                            <span class="last-activity text-secondary fs-6 p-1">ultimo accesso: oggi alle 12:00</span>
+                            <span class="last-activity text-secondary fs-6 p-1">{{lastLogIn}}</span>
                         </div>
 
                     </div>
@@ -136,7 +136,7 @@
                 
                 <div  class="finale d-flex justify-content-evenly align-items-center  w-100 ">
                     <i class="fa-regular fa-face-smile"></i>
-                    <input class="w-75 p-3 rounded" type="text" placeholder="Scrivi un messaggio">
+                    <input class="w-75 p-3 rounded" type="text" placeholder="Scrivi un messaggio" @keyup.enter="writeMsg()" v-model="inputMessage">
                     <i class="fa-solid fa-microphone"></i>
 
 

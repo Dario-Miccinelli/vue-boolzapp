@@ -3,6 +3,8 @@ var app = new Vue(
 	  el: '#app',
 		data:{
             activeContact: 0,
+            inputMessage: '',
+            lastLogIn: 'Last login today, 12:00',
          contacts: [
             {
                 name: 'Michele',
@@ -177,7 +179,59 @@ var app = new Vue(
 
                 this.activeContact= index;
 
-            }
+            },
+            writeMsg() {
+
+                if (this.inputMessage !== '') {
+    
+                    let data = new Date();
+                    let dataAttuale = data.getDate() + '/' + data.getMonth() + '/' + data.getFullYear();
+                    let oraAttuale = data.getHours() + ':' + data.getMinutes();
+                    console.log(dataAttuale + ' ' + oraAttuale);
+    
+                    let newMessage = {
+    
+                        date: `${oraAttuale}`,
+                        message: this.inputMessage,
+                        status: 'sent'
+                    }
+    
+                    this.contacts[this.activeContact].messages.push(newMessage);
+                    setTimeout(() => this.lastLogIn = 'Online', 800);
+                    setTimeout(() => this.lastLogIn = 'Writing', 1400);
+                    setTimeout(() => this.lastLogIn = 'Online', 1800);
+                    setTimeout(() => this.lastLogIn = 'Last login: Today, ' + oraAttuale, 9000);
+                }
+    
+                this.inputMessage = '';
+    
+                setTimeout(()=>{
+    
+                    this.receivedMsg()
+    
+                },2500)
+    
+            },
+            receivedMsg(){
+
+                let data = new Date();
+                let dataAttuale = data.getDate() + '/' + data.getMonth() + '/' + data.getFullYear();
+                let oraAttuale = data.getHours() + ':' + data.getMinutes();
+                console.log(dataAttuale + ' ' + oraAttuale);
+
+               
+    
+                let ricevedMessage = {
+    
+                    date: `${oraAttuale}`,
+                    message: 'Ok!',
+                    
+                    status: 'recived'
+                }
+    
+                this.contacts[this.activeContact].messages.push(ricevedMessage);
+                this.inputMessage = '';
+            },
          
 
 		}
