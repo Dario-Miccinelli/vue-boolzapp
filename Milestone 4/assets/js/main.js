@@ -193,7 +193,7 @@ var app = new Vue(
     
                         date: `${oraAttuale}`,
                         message: this.inputMessage,
-                        status: 'sent'
+                        status: 'sent',
                     }
     
                     this.contacts[this.activeContact].messages.push(newMessage);
@@ -233,6 +233,9 @@ var app = new Vue(
                 this.inputMessage = '';
             },
          
+            deleteEvent: function(contacts, index) {
+                this.contacts.splice(this.contacts.indexOf(contacts), 6);
+              }
 
 		}
 	}

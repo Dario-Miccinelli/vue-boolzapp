@@ -124,6 +124,14 @@ i {
  
 }
 
+.position {
+  position: absolute;
+  bottom: 4rem;
+  border: none;
+  background-color: #112403;
+  color: white;
+}
+
 .finale  {
     width: 100%;
     background-color: #f2f2f2;
