@@ -2,6 +2,7 @@ var app = new Vue(
 	{
 	  el: '#app',
 		data:{
+            activeContact: 0,
          contacts: [
             {
                 name: 'Michele',
@@ -166,14 +167,13 @@ var app = new Vue(
             }
          ],
 
-         lastMessageText: '',
-
-         number: 2,
+       
 
 	  },
 
 		methods:{
 			
+        
          
 
 		}
