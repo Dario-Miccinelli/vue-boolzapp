@@ -63,18 +63,19 @@
 
 
                 <!-- piccolo input per cercare tra  le chat -->
-                <div class="d-flex bg-light p-2 align-items-center">
-                    <i class="fa-solid fa-magnifying-glass p-1"></i>
-                    <input type="text" placeholder="Cerca o inizia una nuova chat" class="input">
+                <div class="p-2 d-flex align-items-center justify-content-between border-bottom bg-white">
+                    <i class="fa-solid fa-magnifying-glass p-2 icongrey bg-white border"></i>
+                        <input type="text" v-model="nuovoText2" v-on:keyup="contactFilt()" class="form-control" name="" id=""
+                        placeholder="Cerca o inizia una nuova chat">
                 </div>
-
+               
 
                 <!-- Div laterali chat -->
 
 
                 <!-- MODO DINAMICO CICLATO CON V-FOR -->
 
-                <div v-for="(element, index) in contacts" class="d-flex align-items-center justify-content-between p-1 " @click="funzioneChange(element, index)">
+                <div v-for="(element, index) in contacts" class="d-flex align-items-center justify-content-between p-1 " @click="funzioneChange(element, index)" v-if="element.visible == true">
 
                     <div class="d-flex align-items-center">
                        <img :src="contacts[index].avatar"  alt="Profile image">

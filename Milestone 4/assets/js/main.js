@@ -2,9 +2,11 @@ var app = new Vue(
 	{
 	  el: '#app',
 		data:{
+            nuovoText2 : '',
             activeContact: 0,
             inputMessage: '',
             lastLogIn: 'Last login today, 12:00',
+            
          contacts: [
             {
                 name: 'Michele',
@@ -168,6 +170,7 @@ var app = new Vue(
                 ],
             }
          ],
+         searchText: '',
 
        
 
@@ -235,7 +238,30 @@ var app = new Vue(
          
             deleteEvent: function(contacts, index) {
                 this.contacts.splice(this.contacts.indexOf(contacts), 6);
+              },
+              contactFilt () {
+                // names = this.contacts[this.indiceDin].name; 
+          
+                // const result = names.includes(this.nuovoText);
+          
+                this.contacts.forEach(element => {
+                  let lower = element.name.toLowerCase();
+          
+                  let input = this.nuovoText2.toLowerCase();
+                  
+                  if (lower.includes(input)) {
+                    element.visible = true;
+                  } else {
+                    element.visible = false;
+                  }
+                });
               }
+
+                
+
+
+
+            
 
 		}
 	}
